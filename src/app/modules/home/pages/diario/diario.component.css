@@ -1,0 +1,19 @@
+#content {
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 2em;
+    color: #0A60BD;
+}
+
+main {
+    display: grid;
+    gap: 0.8rem;
+}
+
+article {
+    display: grid;
+    gap: 0.3rem;
+}

@@ -1,0 +1,12 @@
+<section id="content">
+    <main>
+        <h1>HOY</h1>
+        <article>
+            <app-card-line-appointment-information *ngFor="let client of clientsCurrently" [client]="client"/>
+        </article>
+        <h1>VENCIDOS</h1>
+        <article>
+            <app-card-line-appointment-information *ngFor="let client of clientsDefeated" [client]="client" [onlyDate]="true"/>
+        </article>
+    </main>
+</section>

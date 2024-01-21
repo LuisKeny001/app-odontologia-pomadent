@@ -1,0 +1,1 @@
+export { SiderbarService } from './services/triggers/siderbar.service'
