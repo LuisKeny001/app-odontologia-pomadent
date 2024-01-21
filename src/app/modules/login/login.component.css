@@ -1,6 +1,6 @@
 .container {
     min-height: 100vh;
-    background: linear-gradient(135deg, #10396A, #177EE0 90%);
+    background: linear-gradient(135deg, #fff, #fff 90%);
     display: grid;
     place-items: center;
 }
@@ -22,7 +22,7 @@ form {
 
     h1 {
         text-align: center;
-        font-size: 36px;
+        font-size: 24px;
         background: -webkit-linear-gradient(-150deg,#160ABD 10%, #3539FF 90%);
         background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -92,4 +92,13 @@ input[type="submit"].disabled {
 input[type="submit"]:not(.disabled):hover {
     scale: 1.2;
     background: #3539FF;
+}
+
+@media (width > 400px) {
+    form h1 {
+        font-size: 36px;
+    }
+    .container {
+        background: linear-gradient(135deg, #10396A, #177EE0 90%);
+    }
 }
