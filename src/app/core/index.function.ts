@@ -1,1 +1,1 @@
-export { calculateDateString, hoursCurrently } from './function/date.function'
+export { calculateDateString, hoursCurrently, orderHoursString } from './function/date.function'

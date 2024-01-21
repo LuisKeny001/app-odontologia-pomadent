@@ -39,15 +39,20 @@
                 </svg>                    
             </ng-container>
         </ng-container>
-        <h4 class="client">{{client.name}}</h4>
-        <span class="date">
-            <ng-container *ngIf="onlyDate; else hours">
-                {{client.date}}
-            </ng-container>
-            <ng-template #hours>
-                {{client.hour_init}} - {{client.hour_end}}
-            </ng-template>
-        </span>
+        <article id="data">
+            <h4 class="client">
+                <ng-container *ngIf="!isLargeScreen">{{ client.name }}</ng-container>
+                <ng-container *ngIf="isLargeScreen">{{ delimiteName(client.name) }}</ng-container>
+            </h4>
+            <span class="date">
+                <ng-container *ngIf="onlyDate; else hours">
+                    {{client.date}}
+                </ng-container>
+                <ng-template #hours>
+                    {{client.hour_init}} - {{client.hour_end}}
+                </ng-template>
+            </span>
+        </article>
     </div>
     <ul>
         <li>Datos</li>

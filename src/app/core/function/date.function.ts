@@ -13,3 +13,9 @@ export function hoursCurrently(): string {
 
     return horaLimite;
 }
+
+export function orderHoursString(hour_first: string, hour_second: string): number {
+    const aValue: number = parseInt(hour_first.split(':')[0]);
+    const bValue: number = parseInt(hour_second.split(':')[0]);
+    return aValue - bValue;
+}

@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { hoursCurrently } from 'src/app/core/index.function';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { calculateDateString, hoursCurrently } from 'src/app/core/index.function';
 
 interface client {
   id: number,
@@ -19,15 +19,28 @@ export class CardLineAppointmentInformationComponent implements OnInit {
   @Input()client!: client;
   @Input()onlyDate: boolean = false;
   statusIcon: number = 1; /* 0: pending, 1: done, 2: defeated */
+  isLargeScreen = window.innerWidth > 768;
 
   ngOnInit() {
     const { hour_end, done } = this.client;
+    const dateCurrently: string = calculateDateString(new Date);
 
     if(done) {
       this.statusIcon = 1;
     } else {
-      const defeated: boolean = hoursCurrently() > hour_end;
+      const defeated: boolean = hoursCurrently() > hour_end || dateCurrently > this.client.date;
       this.statusIcon = defeated ? 2 : 0;
     }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    this.isLargeScreen = window.innerWidth < 380;
+  }
+
+  delimiteName(name: string): string {
+    const maxLength = 20;
+    const truncatedName = name.length > maxLength ? name.substring(0, maxLength) + '...' : name;
+    return truncatedName;
   }
 }

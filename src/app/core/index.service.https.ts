@@ -1,0 +1,1 @@
+export { DiarioService } from './services/https/diario.service'
