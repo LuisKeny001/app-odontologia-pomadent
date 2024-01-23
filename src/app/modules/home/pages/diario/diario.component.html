@@ -2,11 +2,21 @@
     <main>
         <h1>HOY</h1>
         <article>
-            <app-card-line-appointment-information *ngFor="let client of clientsCurrently" [client]="client"/>
+            <ng-container *ngIf="clientsCurrently.length !== 0; else noClients">
+                <app-card-line-appointment-information *ngFor="let client of clientsCurrently" [client]="client"/>
+            </ng-container>
+            <ng-template #noClients>
+                <h3>No hay clientes programados para hoy</h3>
+            </ng-template>
         </article>
         <h1>VENCIDOS</h1>
         <article>
-            <app-card-line-appointment-information *ngFor="let client of clientsDefeated" [client]="client" [onlyDate]="true"/>
+            <ng-container *ngIf="clientsDefeated.length !== 0; else noDefeat">
+                <app-card-line-appointment-information *ngFor="let client of clientsDefeated" [client]="client" [onlyDate]="true"/>
+            </ng-container>
+            <ng-template #noDefeat>
+                <h3>No hay citas vencidas</h3>
+            </ng-template>
         </article>
     </main>
 </section>

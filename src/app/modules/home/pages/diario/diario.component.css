@@ -18,3 +18,11 @@ article {
     display: grid;
     gap: 0.3rem;
 }
+
+h3 {
+    padding: 0 2rem;
+    color: #324d6b;
+    font-weight: 700;
+    font-size: 1.5em;
+    text-align: center;
+}
