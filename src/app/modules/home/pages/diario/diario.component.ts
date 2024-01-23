@@ -90,7 +90,7 @@ export class DiarioComponent implements OnInit, OnDestroy {
       this.clientsCurrently = clients.filter(client => client.date == dateCurrently)
       .sort((a, b) => orderHoursString(a.hour_init,b.hour_init));
 
-    this.clientsDefeated = clients.filter(client => client.date < dateCurrently)
+    this.clientsDefeated = clients.filter(client => client.date < dateCurrently && !client.done)
       .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
     })
   }
