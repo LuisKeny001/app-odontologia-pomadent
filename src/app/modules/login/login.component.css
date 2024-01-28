@@ -94,6 +94,15 @@ input[type="submit"]:not(.disabled):hover {
     background: #3539FF;
 }
 
+.list-error {
+    list-style: none;
+    padding: 0;
+}
+
+.list-error li {
+    color: red;
+}
+
 @media (width > 400px) {
     form h1 {
         font-size: 36px;

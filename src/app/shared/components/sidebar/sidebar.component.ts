@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { SiderbarService } from 'src/app/core/index.service.triggers';
 import { HomeRoutingModule } from 'src/app/modules/home/home-routing.module';
 
@@ -18,7 +18,14 @@ export class SidebarComponent {
     private siderbarSrv: SiderbarService
   ){}
 
-  reactiveSidebar(){
+  @HostListener('window:resize', ['$event'])
+  private onResize(event$: any) {
+    if(event$.target.innerWidth < 768 && this.activate) {
+      this.reactiveSidebar();
+    }
+  }
+
+  public reactiveSidebar(){
     this.activate = !this.activate;
     this.siderbarSrv.activatedSidebar$.emit(this.activate);
   }
