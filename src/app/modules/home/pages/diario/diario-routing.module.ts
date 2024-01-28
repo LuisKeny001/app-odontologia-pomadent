@@ -5,6 +5,7 @@ import { DiarioComponent } from './diario.component';
 const routes: Routes = [
   {
     path: '',
+    title: 'Diario',
     component: DiarioComponent
   }
 ];

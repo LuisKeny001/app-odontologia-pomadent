@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { calculateDateString, orderHoursString } from 'src/app/core/index.function';
 import { DiarioService } from 'src/app/core/index.service.https';
 import { Client } from 'src/app/core/index.interface';
+import { ModalService } from 'src/app/core/index.service.triggers';
 
 @Component({
   selector: 'app-diario',
@@ -13,25 +14,32 @@ export class DiarioComponent implements OnInit, OnDestroy {
   
   clientsCurrently: Client[] = [];
   clientsDefeated: Client[] = [];
+  activateModal: boolean = false;
+  
   diarioSubcription: Subscription = new Subscription();
+  modalSubcription: Subscription = new Subscription();
 
   constructor(
-    private diarioSrv: DiarioService
+    private diarioSrv: DiarioService,
+    private modalSrv: ModalService
   ){}
 
   ngOnInit() {
     const dateCurrently: string = calculateDateString(new Date);
-    this.diarioSubcription = this.diarioSrv.getDiario().subscribe(clients => {
-      this.clientsCurrently = clients.filter(client => client.date == dateCurrently)
-      .sort((a, b) => orderHoursString(a.hour_init,b.hour_init));
-
-      this.clientsDefeated = clients.filter(client => client.date < dateCurrently && !client.done)
-      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-    })
+    this.diarioSubcription = this.diarioSrv.getDiario().subscribe(clients => this.OrganizatedClients(dateCurrently, clients))
+    this.modalSubcription = this.modalSrv.activatedModal$.subscribe(res => this.activateModal = res);
   }
 
   ngOnDestroy(): void {
     this.diarioSubcription.unsubscribe();
+    this.modalSubcription.unsubscribe();
   }
 
+  private OrganizatedClients(dateCurrently: string, clients: Client[]): void {
+    this.clientsCurrently = clients.filter(client => client.date == dateCurrently)
+      .sort((a, b) => orderHoursString(a.hour_init,b.hour_init));
+
+    this.clientsDefeated = clients.filter(client => client.date < dateCurrently && !client.done)
+      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  }
 }
