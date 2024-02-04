@@ -11,7 +11,6 @@ import { ModalService } from 'src/app/core/index.service.triggers';
 })
 export class ModalComponent {
   @ViewChild('asContainerModal') containerModal!: ElementRef;
-  @ViewChild('asBtnCloseModal') btnCloseModal!: ElementRef;
 
   constructor(
     private modalSrv: ModalService
@@ -19,10 +18,12 @@ export class ModalComponent {
 
   public closeModal($event: any) {
     const container = this.containerModal.nativeElement;
-    const btnClose =this.btnCloseModal.nativeElement;
-    
-    if($event === container || $event === btnClose) {
-      this.modalSrv.activatedModal$.emit(false);
+    if($event === container) {
+      this.emitCloseModal();
     }
+  }
+
+  public emitCloseModal() {
+    this.modalSrv.activatedModal$.emit(false);
   }
 }

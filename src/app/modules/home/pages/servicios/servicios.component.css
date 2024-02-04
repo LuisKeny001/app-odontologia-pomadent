@@ -1,0 +1,23 @@
+#content {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 2rem;
+}
+main {
+    display: grid;
+    gap: 0.8rem;
+    width: 100%;
+}
+
+#container-cards {
+    display: grid;
+    gap: 0.5rem;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(14rem,1fr));
+}
+
+@media (width < 548px) {
+    #container-cards {
+        grid-template-columns: repeat(auto-fit, 14rem);
+    }
+}

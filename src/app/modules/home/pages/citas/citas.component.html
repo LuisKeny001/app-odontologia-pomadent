@@ -1,2 +1,10 @@
-<p>citas works!</p>
-<input type="time" name="" id="">
+<section id="content">
+    <main>
+        <app-search #search_and_addItem (ngChange)="openModal()"></app-search>
+        <h1>acá veremos que podemos hacer con las citas creadas</h1>
+    </main>
+    <app-modal *ngIf="search_and_addItem.addItem">
+        <h1>Aqui agregaremos una nueva cita</h1>
+    </app-modal>
+</section>
+<!-- <input type="time" name="" id=""> -->

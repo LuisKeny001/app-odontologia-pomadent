@@ -1,1 +1,9 @@
-<p>clientes works!</p>
+<section id="content">
+    <main>
+        <app-search #search_and_addItem (ngChange)="openModal()"></app-search>
+        <h1>Hola mundo xd</h1>
+    </main>
+    <app-modal *ngIf="search_and_addItem.addItem">
+        <h1>Aqui agregaremos un nuevo cliente</h1>
+    </app-modal>
+</section>

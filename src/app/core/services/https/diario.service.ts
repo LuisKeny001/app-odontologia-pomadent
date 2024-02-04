@@ -6,7 +6,7 @@ import { Client } from '../../index.interface';
   providedIn: 'root'
 })
 export class DiarioService {
-  url: string = './../../../../assets/json/diario.json';
+  url: string = 'assets/json/diario.json';
   constructor(
     private http: HttpClient
   ) {}

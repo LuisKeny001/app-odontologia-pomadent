@@ -1,1 +1,18 @@
-<p>servicios works!</p>
+<section id="content">
+    <main>
+        <app-search #search_and_addItem (ngChange)="openModal()"></app-search>
+        <div id="container-cards">
+            <app-card-servios></app-card-servios>
+            <app-card-servios></app-card-servios>
+            <app-card-servios></app-card-servios>
+            <app-card-servios></app-card-servios>
+            <app-card-servios></app-card-servios>
+            <app-card-servios></app-card-servios>
+            <app-card-servios></app-card-servios>
+        </div>
+    </main>
+    <app-modal *ngIf="search_and_addItem.addItem">
+        <h1>Aqui agregaremos un nuevo servicio</h1>
+    </app-modal>
+</section>
+
