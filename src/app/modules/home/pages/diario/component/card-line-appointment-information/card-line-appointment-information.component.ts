@@ -1,15 +1,7 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { calculateDateString, hoursCurrently } from 'src/app/core/index.function';
+import { Diario } from 'src/app/core/index.interface';
 import { ModalService } from 'src/app/core/index.service.triggers';
-
-interface client {
-  id: number,
-  name: string,
-  date: string,
-  done: boolean,
-  hour_init: string,
-  hour_end: string
-}
 
 @Component({
   selector: 'app-card-line-appointment-information',
@@ -17,7 +9,7 @@ interface client {
   styleUrls: ['./card-line-appointment-information.component.css']
 })
 export class CardLineAppointmentInformationComponent implements OnInit {
-  @Input()client!: client;
+  @Input()client!: Diario;
   @Input()onlyDate: boolean = false;
   statusIcon: number = 1; /* 0: pending, 1: done, 2: defeated */
   isLargeScreen = window.innerWidth > 768;

@@ -6,4 +6,23 @@
 main {
     display: grid;
     gap: 0.8rem;
+    width: 100%;
+}
+
+#container-cards {
+    display: grid;
+    gap: 0.5rem;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(16rem,1fr));
+}
+
+.servicio {
+    display: grid;
+    cursor: pointer;
+}
+
+@media (width < 548px) {
+    #container-cards {
+        grid-template-columns: repeat(auto-fit, 16rem);
+    }
 }

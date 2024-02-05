@@ -1,0 +1,70 @@
+section {
+    display: grid;
+    max-width: 20rem;
+    grid-template-rows: 10rem 1fr;
+    border: solid 1px #177EE0;
+    border-radius: 0.4rem;
+    -webkit-border-radius: 0.4rem;
+    -moz-border-radius: 0.4rem;
+    -ms-border-radius: 0.4rem;
+    -o-border-radius: 0.4rem;
+}
+
+span#container-img {
+    display: grid;
+    place-items: center;
+}
+
+article {
+    background: #fff;
+    padding: 0 0.5rem 0.5rem 0.5rem;
+    box-shadow: 0px -4px 10px 10px #fff;
+}
+
+article > div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+span#sex, span#imc {
+    display: grid;
+    place-items: center;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+span#sex {
+    padding: 0.2rem;
+}
+
+span#imc {
+    padding: 0.2rem 0.4rem;
+    background: #F87A34;
+    color: #fff;
+    font-weight: 500;
+}
+
+div:has(>p) p,
+div:has(>p) span {
+    font-size: 0.8rem;
+}
+
+span#container-img.masculino{
+    background: #0A60BD;
+}
+
+span#sex.masculino {
+    background: #177EE0;
+}
+
+span#container-img.femenino{
+    background: #FB3AE4;
+}
+
+span#sex.femenino {
+    background: #FF70EC;
+}

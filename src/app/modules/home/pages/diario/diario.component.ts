@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { calculateDateString, orderHoursString } from 'src/app/core/index.function';
 import { DiarioService } from 'src/app/core/index.service.https';
-import { Client } from 'src/app/core/index.interface';
+import { Diario } from 'src/app/core/index.interface';
 import { ModalService } from 'src/app/core/index.service.triggers';
 
 @Component({
@@ -12,8 +12,8 @@ import { ModalService } from 'src/app/core/index.service.triggers';
 })
 export class DiarioComponent implements OnInit, OnDestroy {
   
-  clientsCurrently: Client[] = [];
-  clientsDefeated: Client[] = [];
+  clientsCurrently: Diario[] = [];
+  clientsDefeated: Diario[] = [];
   activateModal: boolean = false;
   
   diarioSubcription: Subscription = new Subscription();
@@ -35,7 +35,7 @@ export class DiarioComponent implements OnInit, OnDestroy {
     this.modalSubcription.unsubscribe();
   }
 
-  private OrganizatedClients(dateCurrently: string, clients: Client[]): void {
+  private OrganizatedClients(dateCurrently: string, clients: Diario[]): void {
     this.clientsCurrently = clients.filter(client => client.date == dateCurrently)
       .sort((a, b) => orderHoursString(a.hour_init,b.hour_init));
 

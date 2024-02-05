@@ -1,7 +1,14 @@
 <section id="content">
     <main>
-        <app-search #search_and_addItem (ngChange)="openModal()"></app-search>
-        <h1>Hola mundo xd</h1>
+        <app-search #search_and_addItem (searchChanged)="filterClients($event)"></app-search>
+        <div id="container-cards">
+            <ng-container *ngIf="listaCliente.length !== 0; else noClient">
+                <app-card-clientes *ngFor="let cliente of listaCliente" [cliente]="cliente"></app-card-clientes>
+            </ng-container>
+            <ng-template #noClient>
+                <h3>No hay clientes registrados</h3>
+            </ng-template>
+        </div>
     </main>
     <app-modal *ngIf="search_and_addItem.addItem">
         <h1>Aqui agregaremos un nuevo cliente</h1>

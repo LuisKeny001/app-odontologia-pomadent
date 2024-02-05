@@ -1,4 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ModalService } from 'src/app/core/index.service.triggers';
 import { SearchComponent } from 'src/app/shared/components/search/search.component';
 
@@ -7,19 +8,19 @@ import { SearchComponent } from 'src/app/shared/components/search/search.compone
   templateUrl: './citas.component.html',
   styleUrls: ['./citas.component.css']
 })
-export class CitasComponent {
+export class CitasComponent implements OnInit, OnDestroy {
   @ViewChild('search_and_addItem') search_and_addItem!: SearchComponent;
+  modalSbc: Subscription = new Subscription();
 
   constructor(
     private modalSrv: ModalService
   ){}
 
   ngOnInit(): void {
-    this.modalSrv.activatedModal$.subscribe(res => this.search_and_addItem.addItem = res);
+    this.modalSbc = this.modalSrv.activatedModal$.subscribe(res => this.search_and_addItem.addItem = res);
   }
 
-  public openModal(): void {
-    const activateModal: boolean = this.search_and_addItem.addItem;
-    this.modalSrv.activatedModal$.emit(activateModal);
+  ngOnDestroy(): void {
+    this.modalSbc.unsubscribe();
   }
 }

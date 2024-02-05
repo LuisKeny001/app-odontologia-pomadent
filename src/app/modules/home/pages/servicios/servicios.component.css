@@ -16,6 +16,11 @@ main {
     grid-template-columns: repeat(auto-fit, minmax(14rem,1fr));
 }
 
+.servicio {
+    display: grid;
+    cursor: pointer;
+}
+
 @media (width < 548px) {
     #container-cards {
         grid-template-columns: repeat(auto-fit, 14rem);

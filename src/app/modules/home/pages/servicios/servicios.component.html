@@ -1,18 +1,22 @@
 <section id="content">
     <main>
-        <app-search #search_and_addItem (ngChange)="openModal()"></app-search>
+        <app-search #search_and_addItem (searchChanged)="filterServicios($event)"></app-search>
         <div id="container-cards">
-            <app-card-servios></app-card-servios>
-            <app-card-servios></app-card-servios>
-            <app-card-servios></app-card-servios>
-            <app-card-servios></app-card-servios>
-            <app-card-servios></app-card-servios>
-            <app-card-servios></app-card-servios>
-            <app-card-servios></app-card-servios>
+            <ng-container *ngIf="listaServicio.length !== 0; else noServicios">
+                <app-card-servios
+                class="servicio"
+                *ngFor="let servicio of listaServicio" 
+                [servicio]="servicio" 
+                (click)="openModal(servicio)"
+                ></app-card-servios>
+            </ng-container>
+            <ng-template #noServicios>
+                <h3>No hay servicios registrados</h3>
+            </ng-template>
         </div>
     </main>
     <app-modal *ngIf="search_and_addItem.addItem">
-        <h1>Aqui agregaremos un nuevo servicio</h1>
+        <h1>{{servicio | json}}</h1>
     </app-modal>
 </section>
 

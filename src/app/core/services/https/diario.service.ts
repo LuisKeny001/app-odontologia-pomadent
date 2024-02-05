@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Client } from '../../index.interface';
+import { Diario } from '../../index.interface';
+import { Observable, map } from 'rxjs';
+import { DiarioModel } from '../../interface/backend/diario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +13,10 @@ export class DiarioService {
     private http: HttpClient
   ) {}
 
-  getDiario() {
-    return this.http.get<Client[]>(this.url);
+  getDiario(): Observable<Diario[]> {
+    return this.http.get<DiarioModel[]>(this.url).pipe(
+      map(res => res.map(obj => Diario.desdeBackend(obj)))
+    );
   }
 
 }
