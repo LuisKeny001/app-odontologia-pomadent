@@ -30,7 +30,7 @@
                     <input type="password" placeholder="password" formControlName="password">
                 </label>
                 <ul class="list-error">
-                    <li *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('email')?.touched">
+                    <li *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
                         Este campo es obligatorio*
                     </li>
                 </ul>
